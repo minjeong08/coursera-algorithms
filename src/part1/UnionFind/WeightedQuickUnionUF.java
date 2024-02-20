@@ -16,7 +16,10 @@ public class WeightedQuickUnionUF {
     }
 
     private int root(int i) {
-        while (i != id[i]) i = id[i];
+        while (i != id[i]) {
+            id[i] = id[id[i]]; // 탐색한 노드들을 직접 루트 노드로 연결하면서 동시에 그 노드의 부모를 조부모(Grandparent)로 설정
+            i = id[i];
+        }
         return i;
     }
 
